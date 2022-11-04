@@ -1,17 +1,18 @@
 # Create a class MyList that has an instance variable @list.
-# In MyList implement a method #each that yields successive members of 
+# In MyList implement a method #each that yields successive members of
 # @list and uses the MyEnumerable module.
 
 require_relative 'enumerable'
 
 class MyList
-    def initialize(*list)
-      @list = []
-      list.each { |arg| @list << arg }
-    end
-        include MyEnumerable
-    def each
-      @list.each { |value| yield value if block_given? }
-    end
+  include MyEnumerable
+
+  def initialize(*list)
+    @list = []
+    list.each { |arg| @list << arg }
   end
-  
+
+  def each
+    @list.each { |value| yield value if block_given? }
+  end
+end
