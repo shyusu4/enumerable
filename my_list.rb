@@ -7,7 +7,7 @@ class MyList
       @list = []
       list.each { |arg| @list << arg }
     end
-  
+        include enumerable
     def each
       @list.each { |value| yield value if block_given? }
     end
