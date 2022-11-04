@@ -1,19 +1,22 @@
 module MyEnumerable
-  def all?
-    value = true
-    each { |number| return false unless yield number }
-    value
+    def all?
+      return true unless block_given?
+  
+      each { |n| return false unless yield(n) }
+      true
+    end
+  
+    def any?
+      return true unless block_given?
+  
+      each { |n| return true if yield(n) }
+      false
+    end
+  
+    def filter?
+      arr = []
+      each { |n| arr.push(n) if yield(n) }
+      arr
+    end
   end
-
-  def any?
-    value = false
-    each { |number| return true if yield number }
-    value
-  end
-
-  def filter
-    value = []
-    each { |number| value.push(number) if yield number }
-    value
-  end
-end
+  
