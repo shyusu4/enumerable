@@ -1,7 +1,8 @@
-module enumerable
+
+module MyEnumerable
     def all? 
         each {|number| return false unless yield number}
-        trur
+        true
     end
 
     def any?
